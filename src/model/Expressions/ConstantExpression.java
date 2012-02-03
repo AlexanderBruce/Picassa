@@ -28,7 +28,7 @@ public class ConstantExpression extends Expression
 
     public RGBColor evaluate (double x,
                               double y,
-                              Map<String, Expression> variableNames)
+                              Map<String, Expression> variableNames, double time)
     {
         return myValue;
     }

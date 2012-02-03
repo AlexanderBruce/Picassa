@@ -46,7 +46,7 @@ public class LetExpression extends ParenExpression
     @Override
     public RGBColor evaluate (double x,
                               double y,
-                              Map<String, Expression> variableNames)
+                              Map<String, Expression> variableNames, double time)
     {
 
         List<Expression> mySubExpressions = getSubExpressions();
@@ -57,7 +57,7 @@ public class LetExpression extends ParenExpression
         VariableNameExpression key =
             (VariableNameExpression) mySubExpressions.get(0);
         variableNames.put(key.getMyVar(), mySubExpressions.get(1));
-        return mySubExpressions.get(2).evaluate(x, y, variableNames);
+        return mySubExpressions.get(2).evaluate(x, y, variableNames, time);
 
     }
 

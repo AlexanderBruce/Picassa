@@ -24,9 +24,9 @@ public class MinusExpression extends ParenExpression
 
     public RGBColor evaluate (double x,
                               double y,
-                              Map<String, Expression> variableNames)
+                              Map<String, Expression> variableNames, double time)
     {
-        List<RGBColor> result = evaluateSubExpressions(x, y, variableNames);
+        List<RGBColor> result = evaluateSubExpressions(x, y, variableNames, time);
         return ColorCombinations.subtract(result.get(0), result.get(1));
     }
 

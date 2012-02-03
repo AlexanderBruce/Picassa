@@ -6,19 +6,13 @@ import model.Parser;
 import model.RGBColor;
 
 
-public class XYExpression extends Expression
+public class TimeExpression extends Expression
 {
-    private static final Pattern MYKINDOFEXPRESSION = Pattern.compile("x|y");
-    private String myXOrY;
+    private static final Pattern MYKINDOFEXPRESSION = Pattern.compile("t");
 
 
-    public XYExpression (String xOrY)
-    {
-        myXOrY = xOrY;
-    }
 
-
-    private XYExpression ()
+    public TimeExpression ()
     {
 
     }
@@ -28,8 +22,7 @@ public class XYExpression extends Expression
                               double y,
                               Map<String, Expression> variables, double time)
     {
-        if (myXOrY.equals("x")) return new RGBColor(x, x, x);
-        return new RGBColor(y, y, y);
+        return new RGBColor(time*2 -1);
     }
 
 
@@ -52,20 +45,15 @@ public class XYExpression extends Expression
     {
 
         parser.skipWhiteSpace();
-        String result = "" + parser.currentCharacter();
         parser.updatePosition(ONE);
-        return new XYExpression(result);
+        return new TimeExpression();
     }
 
 
     public static ExpressionFactory getFactory ()
     {
-        return new ExpressionFactory(new XYExpression());
+        return new ExpressionFactory(new TimeExpression());
     }
-    
-    public String toString()
-    {
-        return myXOrY;
-    }
+
 
 }

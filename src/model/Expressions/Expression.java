@@ -25,11 +25,12 @@ public abstract class Expression
 
 
     /**
+     * @param time TODO
      * @param variables TODO
      * @return value of expression
      */
     public abstract RGBColor evaluate (double x,
                                        double y,
-                                       Map<String, Expression> variableNames);
+                                       Map<String, Expression> variableNames, double time);
 
 }

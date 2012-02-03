@@ -49,9 +49,9 @@ public class PerlinColorExpression extends ParenExpression
     @Override
     public RGBColor evaluate (double x,
                               double y,
-                              Map<String, Expression> variableNames)
+                              Map<String, Expression> variableNames, double time)
     {
-        List<RGBColor> results = evaluateSubExpressions(x, y, variableNames);
+        List<RGBColor> results = evaluateSubExpressions(x, y, variableNames, time);
         return PerlinNoise.colorNoise(results.get(0), results.get(1));
     }
 

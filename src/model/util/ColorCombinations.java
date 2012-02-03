@@ -73,6 +73,8 @@ public class ColorCombinations
     						Math.pow(left.getGreen(), right.getGreen()),
     						Math.pow(left.getBlue(),right.getBlue()));
     }
+
+    
     /**
      * Inverts a color
      */
@@ -92,5 +94,19 @@ public class ColorCombinations
     	return new RGBColor(first.getRed(),
     						second.getGreen(),
     						third.getBlue());
+    }
+
+    public static RGBColor min (RGBColor left, RGBColor right)
+    {
+        if(left.compareTo(right)<0)
+            return left;
+        return right;
+    }
+    
+    public static RGBColor max (RGBColor left, RGBColor right)
+    {
+        if(left.compareTo(right)<0)
+            return right;
+        return left;
     }
 }

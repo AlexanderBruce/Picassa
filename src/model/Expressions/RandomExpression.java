@@ -58,7 +58,7 @@ public class RandomExpression extends ParenExpression
     @Override
     public RGBColor evaluate (double x,
                               double y,
-                              Map<String, Expression> variableNames)
+                              Map<String, Expression> variableNames, double time)
     {
         Random generator = new Random();
         double red = ((generator.nextDouble() * 2) - 1);

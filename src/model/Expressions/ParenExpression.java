@@ -44,7 +44,7 @@ public abstract class ParenExpression extends Expression
 
     protected List<RGBColor> evaluateSubExpressions (double x,
                                                      double y,
-                                                     Map<String, Expression> variableNames)
+                                                     Map<String, Expression> variableNames, double time)
     {
         
         
@@ -57,7 +57,7 @@ public abstract class ParenExpression extends Expression
                 currentVariables.put(key,variableNames.get(key));
             }
             
-            result.add(exp.evaluate(x, y, currentVariables));
+            result.add(exp.evaluate(x, y, currentVariables, time));
         }
         return result;
     }
@@ -118,6 +118,6 @@ public abstract class ParenExpression extends Expression
     @Override
     public abstract RGBColor evaluate (double x,
                                        double y,
-                                       Map<String, Expression> variableNames);
+                                       Map<String, Expression> variableNames, double time);
 
 }

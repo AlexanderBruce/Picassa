@@ -57,7 +57,7 @@ public class VariableNameExpression extends Expression
     @Override
     public RGBColor evaluate (double x,
                               double y,
-                              Map<String, Expression> variableNames)
+                              Map<String, Expression> variableNames, double time)
     {
         if (variableNames.containsKey(myVar))
         {
@@ -71,7 +71,7 @@ public class VariableNameExpression extends Expression
                 }
             }
 
-            return variableNames.get(myVar).evaluate(x, y, variableNames);
+            return variableNames.get(myVar).evaluate(x, y, variableNames, time);
         }
         else throw new ParserException("Undefined Variable");
     }

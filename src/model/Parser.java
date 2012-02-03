@@ -33,6 +33,10 @@ public class Parser
         myCommands.add(NegExpression.getFactory());
         myCommands.add(ExpExpression.getFactory());
         myCommands.add(XYExpression.getFactory());
+        myCommands.add(MinExpression.getFactory());
+        myCommands.add(MaxExpression.getFactory());
+        myCommands.add(ProductExpression.getFactory());
+        myCommands.add(AverageExpression.getFactory());
         myCommands.add(RandomExpression.getFactory());
         myCommands.add(FloorExpression.getFactory());
         myCommands.add(CeilExpression.getFactory());
@@ -44,11 +48,14 @@ public class Parser
         myCommands.add(TanExpression.getFactory());
         myCommands.add(AtanExpression.getFactory());
         myCommands.add(LogExpression.getFactory());
+        myCommands.add(TimeExpression.getFactory());
         myCommands.add(RgbToYCrCbExpression.getFactory());
         myCommands.add(YCrCbToRgbExpression.getFactory());
         myCommands.add(PerlinColorExpression.getFactory());
         myCommands.add(PerlinBWExpression.getFactory());
+        myCommands.add(SumExpression.getFactory());
         myCommands.add(LetExpression.getFactory());
+        myCommands.add(IfExpression.getFactory());
         myCommands.add(VariableNameExpression.getFactory());
         
     }

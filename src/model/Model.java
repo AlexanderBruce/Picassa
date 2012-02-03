@@ -35,6 +35,8 @@ public class Model
     {
         myCurrentTime += 1.0 / NUM_FRAMES;
     }
+    
+
 
 
     /**
@@ -56,7 +58,7 @@ public class Model
                 double evalX = imageToDomainScale(imageX, size.width);
                 result.setColor(imageX,
                                 imageY,
-                                toEval.evaluate(evalX, evalY, variableNames)
+                                toEval.evaluate(evalX, evalY, variableNames, myCurrentTime)
                                       .toJavaColor());
             }
         }

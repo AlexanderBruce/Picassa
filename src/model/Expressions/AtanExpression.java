@@ -48,9 +48,9 @@ public class AtanExpression extends ParenExpression
     @Override
     public RGBColor evaluate (double x,
                               double y,
-                              Map<String, Expression> variableNames)
+                              Map<String, Expression> variableNames, double time)
     {
-        List<RGBColor> results = evaluateSubExpressions(x, y, variableNames);
+        List<RGBColor> results = evaluateSubExpressions(x, y, variableNames, time);
         RGBColor toMake = results.get(0);
         return new RGBColor(Math.atan(toMake.getRed()),
                             Math.atan(toMake.getGreen()),
