@@ -26,14 +26,13 @@ public class Frame extends JFrame
 {
     // default version number
     private static final long serialVersionUID = 1L;
-    private static final int ANIMATION_DELAY = 100;    // in milli-seconds
+    private static final int ANIMATION_DELAY = 100; // in milli-seconds
 
     // state
     private Model myModel;
     private JLabel myDisplay;
     private JTextField myInput;
     private Timer myTimer;
-
 
 
     /**
@@ -73,15 +72,16 @@ public class Frame extends JFrame
         JTextField result = new JTextField();
         result.setBorder(BorderFactory.createLoweredBevelBorder());
         result.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed (ActionEvent evt)
             {
-                @Override
-                public void actionPerformed (ActionEvent evt)
-                {
-                    animateExpression(myInput.getText());
-                }
-            });
+                animateExpression(myInput.getText());
+            }
+        });
         return result;
     }
+
 
     // Return display area for results of expression
     private JLabel makeDisplay (Dimension size)
@@ -91,39 +91,44 @@ public class Frame extends JFrame
         return result;
     }
 
+
     // Evaluate the given input repeatedly to produce an animation
     private void animateExpression (final String text)
     {
         // generate new pictures to animate
         TimerTask task = new TimerTask()
+        {
+            private int index = 0;
+
+
+            @Override
+            public void run ()
             {
-                private int index = 0;
-                @Override
-                public void run ()
+                try
                 {
-                    try
+                    if (index <= Model.NUM_FRAMES)
                     {
-                        if (index <= Model.NUM_FRAMES)
-                        {
-                            myDisplay.setIcon(myModel.evaluate(text, myDisplay.getSize()).toIcon());
-                            myModel.nextFrame();
-                            index++;
-                        }
-                        else
-                        {
-                            endAnimation();
-                        }
+                        myDisplay.setIcon(myModel.evaluate(text,
+                                                           myDisplay.getSize())
+                                                 .toIcon());
+                        myModel.nextFrame();
+                        index++;
                     }
-                    catch (ParserException e)
+                    else
                     {
                         endAnimation();
-                        JOptionPane.showMessageDialog(Frame.this,
-                                                      e.getMessage(),
-                                                      "Input Error",
-                                                      JOptionPane.ERROR_MESSAGE);
                     }
                 }
-            };
+                catch (ParserException e)
+                {
+                    endAnimation();
+                    JOptionPane.showMessageDialog(Frame.this,
+                                                  e.getMessage(),
+                                                  "Input Error",
+                                                  JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        };
         // end previous animation if still running
         endAnimation();
         // start new animation
